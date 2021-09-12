@@ -43,7 +43,7 @@ class App extends React.Component {
     return (
       <div>
         <h2>Let's get started!</h2>
-        {/* <Expenses items={this.state.products} /> */}
+        <Expenses items={this.state.products} />
       </div>
     );
   }
