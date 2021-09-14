@@ -2506,7 +2506,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MealItem_MealItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MealItem/MealItem */ "./resources/js/src/components/Meals/MealItem/MealItem.js");
 /* harmony import */ var _AvailableMeals_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AvailableMeals.module.css */ "./resources/js/src/components/Meals/AvailableMeals.module.css");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Meals_MealItem_SearchForm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Meals/MealItem/SearchForm */ "./resources/js/src/components/Meals/MealItem/SearchForm.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2524,6 +2525,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
@@ -2571,20 +2574,51 @@ var AvailableMeals = function AvailableMeals() {
 
   console.log('products');
   console.log(products);
+
+  var addToSearchHandler = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(searchQuery) {
+      var response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return axios.get(apiUrl + 'products/search/' + searchQuery);
+
+            case 2:
+              response = _context2.sent;
+              console.log(response.data.data);
+              setProducts(response.data.data);
+
+            case 5:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function addToSearchHandler(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
   var mealsList = products.map(function (meal) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_MealItem_MealItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_MealItem_MealItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
       id: meal.id,
       name: meal.name,
       description: meal.description,
       price: meal.price
     }, meal.id);
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("section", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("section", {
     className: _AvailableMeals_module_css__WEBPACK_IMPORTED_MODULE_3__["default"].meals,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_UI_Card__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_UI_Card__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Meals_MealItem_SearchForm__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        onAddToSearch: addToSearchHandler
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
         children: mealsList
-      })
+      })]
     })
   });
 };
@@ -2730,6 +2764,56 @@ var MealItemForm = function MealItemForm(props) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MealItemForm);
+
+/***/ }),
+
+/***/ "./resources/js/src/components/Meals/MealItem/SearchForm.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/src/components/Meals/MealItem/SearchForm.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _UI_Input__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../UI/Input */ "./resources/js/src/components/UI/Input.js");
+/* harmony import */ var _MealItemForm_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MealItemForm.module.css */ "./resources/js/src/components/Meals/MealItem/MealItemForm.module.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+var SearchForm = function SearchForm(props) {
+  var searchInputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
+
+  var submitSearchHandler = function submitSearchHandler(event) {
+    event.preventDefault();
+    var searchQuery = searchInputRef.current.value || null;
+    props.onAddToSearch(searchQuery);
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
+    className: _MealItemForm_module_css__WEBPACK_IMPORTED_MODULE_2__["default"].form,
+    onSubmit: submitSearchHandler,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_UI_Input__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      ref: searchInputRef,
+      input: {
+        id: 'search_' + props.id,
+        type: 'string',
+        defaultValue: ''
+      }
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+      children: "Search"
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SearchForm);
 
 /***/ }),
 
@@ -7820,7 +7904,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".PnqvLXcynxMYIaWXiXVyg {\r\n    display: flex;\r\n    align-items: center;\r\n    margin-bottom: 0.5rem;\r\n  }\r\n  \r\n  .PnqvLXcynxMYIaWXiXVyg label {\r\n    font-weight: bold;\r\n    margin-right: 1rem;\r\n  }\r\n  \r\n  .PnqvLXcynxMYIaWXiXVyg input {\r\n    width: 3rem;\r\n    border-radius: 5px;\r\n    border: 1px solid #ccc;\r\n    font: inherit;\r\n    padding-left: 0.5rem;\r\n  }", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".PnqvLXcynxMYIaWXiXVyg {\r\n    display: flex;\r\n    align-items: center;\r\n    margin-bottom: 0.5rem;\r\n  }\r\n  \r\n  .PnqvLXcynxMYIaWXiXVyg label {\r\n    font-weight: bold;\r\n    margin-right: 1rem;\r\n  }\r\n  \r\n  .PnqvLXcynxMYIaWXiXVyg input {\r\n    width: 6rem;\r\n    border-radius: 5px;\r\n    border: 1px solid #ccc;\r\n    font: inherit;\r\n    padding-left: 0.5rem;\r\n  }", ""]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"input": "PnqvLXcynxMYIaWXiXVyg"

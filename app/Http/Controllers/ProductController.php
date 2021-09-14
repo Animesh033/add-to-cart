@@ -67,12 +67,10 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        if ($product)
-            $response = new ProductResource($product);
-        else
-            $response = response()->json(['data' => 'Product not found.'], 404);
 
-        return $response;
+        $response = $product ? $product :  new Product();
+
+        return new ProductResource($response);
     }
 
     /**
@@ -150,10 +148,9 @@ class ProductController extends Controller
     {
         $products = Product::where('name', 'LIKE', '%' . $searchQuery . '%')
             ->orWhere('description', 'LIKE', '%' . $searchQuery . '%')->get();
-        if (count($products))
-            $response = $products;
-        else
-            $response = 'No product found';
-        return response()->json(['data' => $response]);
+
+        $response = count($products) ? $products : new Product();
+
+        return new ProductResource($response);
     }
 }
