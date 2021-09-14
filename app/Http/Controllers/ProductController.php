@@ -145,4 +145,15 @@ class ProductController extends Controller
         }
         return $imageUrl;
     }
+
+    public function searchProduct($searchQuery)
+    {
+        $products = Product::where('name', 'LIKE', '%' . $searchQuery . '%')
+            ->orWhere('description', 'LIKE', '%' . $searchQuery . '%')->get();
+        if (count($products))
+            $response = $products;
+        else
+            $response = 'No product found';
+        return response()->json(['data' => $response]);
+    }
 }

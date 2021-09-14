@@ -18,4 +18,5 @@ use App\Http\Controllers\ProductController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('products/search/{search}', [ProductController::class, 'searchProduct'])->name('search');
 Route::apiResource('products', ProductController::class);
