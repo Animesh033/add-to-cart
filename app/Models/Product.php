@@ -11,7 +11,7 @@ class Product extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded = [];
+    protected $fillable = ['name', 'description', 'image_url', 'price'];
 
     public static function storeFile($productFile, $productId = null)
     {
